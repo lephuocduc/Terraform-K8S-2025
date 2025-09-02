@@ -124,6 +124,8 @@ provisioner "remote-exec" {
 
     # Apply Calico networking
     "kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml",
+
+    "alias k=kubectl",
   ]
 }
 
