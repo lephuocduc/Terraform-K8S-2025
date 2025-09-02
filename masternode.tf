@@ -73,10 +73,10 @@ provisioner "remote-exec" {
 
     # Kubernetes repo setup (modern, for v1.34)
     "sudo mkdir -p -m 755 /etc/apt/keyrings",
-    "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg",
-    "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list",
+    "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.33/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg",
+    "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list",
 
-    "sudo apt update && sudo apt -y install kubelet kubeadm kubectl",
+    "sudo apt update && sudo apt -y install kubelet=1.33.3-1.1 kubeadm=1.33.3-1.1 kubectl=1.33.3-1.1",
     "sudo apt-mark hold kubelet kubeadm kubectl",
     "sudo systemctl enable --now kubelet",
 
